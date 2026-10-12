@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Contoso.Controls" constructor="RelationshipTagPicker" version="1.0.0"
+           display-name-key="RTP_Display" description-key="RTP_Desc" control-type="virtual">
+    <external-service-usage enabled="false" />
+
+    <!-- Bound to a dedicated, never-written placeholder text column. Gives us form/field read-only + FLS state. -->
+    <property name="boundField" display-name-key="RTP_boundField" description-key="RTP_boundField_Desc"
+              of-type="SingleLine.Text" usage="bound" required="true" />
+
+    <!-- The only required setting: everything else is discovered from Dataverse metadata. -->
+    <property name="relationshipName" display-name-key="RTP_relationshipName" description-key="RTP_relationshipName_Desc"
+              of-type="SingleLine.Text" usage="input" required="true" />
+
+    <!-- Optional presentation / search configuration -->
+    <property name="subtitleAttributes" display-name-key="RTP_subtitleAttributes" description-key="RTP_subtitleAttributes_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="searchAttributes" display-name-key="RTP_searchAttributes" description-key="RTP_searchAttributes_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="includeInactiveRecords" display-name-key="RTP_includeInactiveRecords" description-key="RTP_includeInactiveRecords_Desc"
+              of-type="TwoOptions" usage="input" required="false" />
+    <property name="minSearchCharacters" display-name-key="RTP_minSearchCharacters" description-key="RTP_minSearchCharacters_Desc"
+              of-type="Whole.None" usage="input" required="false" default-value="2" />
+    <property name="debounceMilliseconds" display-name-key="RTP_debounceMilliseconds" description-key="RTP_debounceMilliseconds_Desc"
+              of-type="Whole.None" usage="input" required="false" default-value="300" />
+    <property name="maxSuggestions" display-name-key="RTP_maxSuggestions" description-key="RTP_maxSuggestions_Desc"
+              of-type="Whole.None" usage="input" required="false" default-value="10" />
+
+    <resources>
+      <code path="src/index.ts" order="1" />
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="8.29.0" />
+      <resx path="src/strings/RelationshipTagPicker.1033.resx" version="1.0.0" />
+    </resources>
+
+    <feature-usage>
+      <uses-feature name="WebAPI" required="true" />
+      <uses-feature name="Utility" required="true" />
+    </feature-usage>
+  </control>
+</manifest>
